@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignorando archivos y carpetas personalizado
+web_scraping/
+.vscode/

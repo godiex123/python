@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Foto</th>
+                <th>Fecha Creacion</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for persona in persona_list %}
+            <tr>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.apellido }}</td>
+                <td>{{ persona.edad }}</td>
+                {% if persona.photo %}
+                <td style="text-align:center; width:20%;"><img src="{{ persona.photo.url }}" class="img-fluid" style="width:50%;"></td>
+                {% else %}
+                <td style="text-align:center; width:20%;"> Sin foto </td>
+                {% endif %}
+                <td>{{ persona.created }}</td>
+                <td><a href="{% url 'modificar' persona.id %}">Modificar</a></td>
+                <td><a href="{% url 'eliminar' persona.id %}">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
